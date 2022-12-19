@@ -1,16 +1,6 @@
 version: '3.9'
 services:
 
-  fluent:
-    image: fluent
-
-    ports:
-      - 24224:24224
-
-    networks:
-      backend:
-
-
   mongo:
     image: mongo:4
 
@@ -27,12 +17,21 @@ services:
       MONGODB_DATA_DIR: /data/db
       MONDODB_LOG_DIR: /dev/null
 
+    networks:
+      backend: null
+
+
+  fluent:
+    image: fluent
+
+    ports:
+      - 24224:24224
+
     depends_on:
-      - fluent
+      - mongo
 
     networks:
-      backend:
-
+      backend: null
 
   mongo-express:
     image: mongo-express
