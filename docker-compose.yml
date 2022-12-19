@@ -2,11 +2,7 @@ version: '3.9'
 services:
 
   mongo:
-    image: mongo:4
-
-    deploy:
-      mode: replicated
-      replicas: 1
+    image: mongo:6
 
     command: mongod --auth
 
@@ -34,9 +30,6 @@ services:
 
   mongo-express:
     image: mongo-express
-
-    deploy:
-      replicas: 1
 
     environment:
       ME_CONFIG_MONGODB_PORT: 27017
